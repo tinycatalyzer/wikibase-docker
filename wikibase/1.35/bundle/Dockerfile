@@ -51,3 +51,7 @@ COPY extra-install.sh /
 COPY extra-entrypoint-run-first.sh /
 RUN cat /LocalSettings.php.wikibase-bundle.template >> /LocalSettings.php.template && rm /LocalSettings.php.wikibase-bundle.template
 COPY oauth.ini /templates/oauth.ini
+
+EXPOSE 8080
+
+CMD ["bundle", "exec", "rackup", "--host", "0.0.0.0", "-p", "8080"]
